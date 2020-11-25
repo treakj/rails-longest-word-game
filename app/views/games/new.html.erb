@@ -1,0 +1,17 @@
+<h1>Welcome to the longest word-game!!!</h1>
+<h3>Here is your grid:</h3>
+<div class="card">
+<% @grid.each do |letter| %>
+<p><%= letter %></p>
+<% end %>
+</div>
+<h2>What is your bes shot?</h2>
+
+<form action="/score" method="POST">
+  <input type="text" name="tryword">
+  <input id="grid" name="grid" type="hidden" value=<%=@grid.join()%>>
+  <input id="start_time" name="start_time" type="hidden" value=<%=@start_time%>>
+  <input id="end_time" name="end_time" type="hidden" value=<%=Process.clock_gettime(Process::CLOCK_MONOTONIC)*1000 %>>
+  <input type="submit" value="Play">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+</form>

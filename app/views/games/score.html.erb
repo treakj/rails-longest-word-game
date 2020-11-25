@@ -1,0 +1,11 @@
+<h1>Result</h1>
+<div class="container">
+  <% if @message == 'Not in the grid' %>
+    <h2>Sorry but <em> <%= params[:tryword].upcase %> </em> can't be built out of <%=params[:grid].chars.join(', ')%> </h2>
+   <% elsif @message == 'Not an english word' %>
+    <h2>Sorry but <em><%= params[:tryword].upcase %></em> does not seem to be a valid English word... </h2>
+  <% else %>
+    <h2><strong>Conglatulations!</strong> <em><%= params[:tryword].upcase %></em> is a valid English word!</h2>
+  <% end %>
+  <%= link_to "Play again", new_path %>
+</div>
